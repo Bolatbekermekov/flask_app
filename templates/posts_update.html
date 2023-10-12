@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Updating the article
+{% endblock%}
+
+{% block content%}
+{% for cat,msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+{% block required %}
+{{super()}}
+{% endblock required %}<br><br>
+
+<div class="container">
+    <h1> Updating the article </h1>
+    <form action="{{url_for('post_update',id=article.id)}}" method="post">
+        <input type="text" name ="title" id = "title" value="{{article.title}}" class="form-control" placeholder="Enter a name"><br>
+        <input type="email" name="email" class="form-control" value="{{article.email}}" placeholder="Enter email"><br>
+        <textarea name ="text" id = "text" class="form-control"  placeholder="Enter a main text">{{article.text}}</textarea><br>
+        <input type="submit" class="btn btn-success" value="Update"><br>
+
+
+    </form>
+</div>
+{% endblock %}

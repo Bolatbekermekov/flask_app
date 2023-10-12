@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Main page
+    <link  type="text/css" rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+
+{% endblock%}
+
+{% block content%}
+{% block required %}
+{{super()}}
+{% endblock required %}<br><br>
+<div class="container">
+    <h1> All articles in site </h1>
+    {% if articles|length > 0 %}
+        {% for el in articles %}
+        <div class="alert alert-info">
+        <h2>{{ el.title}}</h2>
+        <p>{{el.email}}</p>
+        <p><b>Data: {{el.time.date()}}</b></p>
+        <a href="/posts/{{el.id}}" class="btn btn-warning">more detail</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>We don't have any articles yet</p>
+    {% endif %}
+    </div>
+    <br> <br>
+{% endblock %}

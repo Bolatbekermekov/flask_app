@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title%}
+{{ article.title}}
+{% endblock%}
+
+{% block content%}
+{% block required %}
+{{super()}}
+{% endblock required %}<br><br>
+<div class="container">
+    <div class="alert alert-info">
+        <p>{{article.text}}</p>
+        <p>{{article.email}}</p>
+        <p><b>Data: {{ article.time.date() }}</b></p>
+        <a href="/posts/{{article.id}}/delete" class="btn btn-danger">Delete</a>
+        <a href="/posts/{{article.id}}/update" class="btn btn-success">Editing</a>
+
+    </div>
+
+    </div>
+
+<br> <br>
+{% endblock %}
